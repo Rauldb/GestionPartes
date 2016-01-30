@@ -25,7 +25,7 @@ public class Conector
 	public Conector(String user, String password){
 			
 			this.driver = SQL_DRIVER;
-			this.url = SQL_URL+"probartag";
+			this.url = SQL_URL+"gestionpartes";
 			this.user = user;
 			this.password = password;
 		
