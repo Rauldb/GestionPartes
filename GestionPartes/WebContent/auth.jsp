@@ -18,7 +18,7 @@
 
 	<sql:query dataSource="${conexion}" var="infousuario">
 	
-		select * from usuarios where usuario = ?;
+		select * from usuarios where nombre = ?;
 		<sql:param value="${param['usuario']}"></sql:param>
 
 
@@ -27,7 +27,7 @@
 	</c:forEach>
 	
 	<c:choose>
-	
+		
 		<c:when test="${infousuario.rows[0].pass eq param.pass }">
 		
 		<c:out value="Tienes acceso"></c:out>
@@ -38,8 +38,7 @@
 		<c:otherwise>
 		
 		<c:set var="reintenta" value="<a href='login.html'> intentarlo</a>" ></c:set>
-	<c:out  escapeXml="false" value="Contraseña incorrecta, vuelva a ${reintenta}"></c:out>
-		
+	<c:out  escapeXml="false" value="Contraseña o usuario incorrecto , vuelva a ${reintenta}"></c:out>		
 		</c:otherwise>
 	
 	
