@@ -31,6 +31,9 @@
 		<c:when test="${infousuario.rows[0].pass eq param.pass }">
 		
 		<c:out value="Tienes acceso"></c:out>
+		<c:redirect url="interfaz.jsp">
+		<c:param name="nombrecompleto" value="${infousuario.rows[0].nombrecompleto}" />
+		</c:redirect>
 		
 		
 		</c:when>

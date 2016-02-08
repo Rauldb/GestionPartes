@@ -1,0 +1,101 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  background-color: lightgrey;
+}
+
+h1 {
+  margin: 0;
+  text-align: center;
+}
+
+#wrapper {
+  margin: auto auto;
+  width: 90%;
+  height: 100vh;
+  background-color: rgb(230, 240, 230)
+}
+
+#main {
+  margin: auto auto ;
+  width: 90%;
+  height: 90%;
+  padding : 0;
+  background-color:rgb(178, 238, 149);
+}
+
+#main p {
+  float: left;
+}
+
+p {
+  width: 50%;
+}
+
+p.conducta {
+  width: 33%;
+}
+
+.clear {
+  clear: both;
+}
+
+textarea {
+  display: block;
+  margin: 0 auto;
+}
+
+select {
+
+}
+
+#conductas{
+  width: 80%;
+  margin: 0 auto;
+  border-style: solid;
+  border-width: thin;
+  background-color: white;
+}
+
+#conductas p {
+  display: inline-block;
+  float: left;
+  width: 40%;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom-width: 3px;
+  font-size: 1em;
+  margin: 0;
+  margin-left: 1%;
+}
+
+#conductas p.leve {
+  background-color:rgb(125, 245, 126) ;
+}
+
+#conductas p.general {
+  background-color:rgb(198, 237, 126) ;
+}
+
+#conductas p.grave {
+  background-color:rgb(255, 105, 105) ;
+}
+
+p button{
+  margin      : 0;
+  padding     : 0;
+  border      : 0;
+  background  : transparent;
+  font-family : inherit;
+  font-size   : 1em;
+  cursor      : pointer;
+  float: right;
+  margin-right: 5%;
+}
+
+button::-moz-focus-inner{
+  padding : 0;
+  border  : 0;
+}
