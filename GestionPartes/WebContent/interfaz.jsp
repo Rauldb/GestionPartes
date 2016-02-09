@@ -6,12 +6,16 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+  <link rel="stylesheet" href="css/anytime.5.1.2.css">  
   <link rel="stylesheet" href="css/formulario.css">
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-  <script src="js/idiomacalendario.js"></script>
+  <script src="js/anytime.5.1.2.js"></script>
+  
   <script>
       $(document).ready(function() {
+    	  
+    	  AnyTime.picker("datepicker");
+    	  
       $('#curso').change(function(event) {
           var $curso=$("select#curso").val();
             $.get('ListaAlumnos',{curso:$curso},function(data) {
@@ -27,11 +31,7 @@
     	 $select.append(data);
       });
       
-      $( "#datepicker" ).datepicker({
-   showOtherMonths: true,
-   selectOtherMonths: true
- });
-
+     
    $(".selectcond").change(function(event) {
 
      if ( $(this).val() != "pordefecto") {
