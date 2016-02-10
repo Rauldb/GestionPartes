@@ -1,19 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-  <link rel="stylesheet" href="css/anytime.5.1.2.css">  
+  <link rel="stylesheet" href="css/anytime.5.1.2.min.css">  
   <link rel="stylesheet" href="css/formulario.css">
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-  <script src="js/anytime.5.1.2.js"></script>
+  <script src="js/anytime.5.1.2.min.js"></script>
   
   <script>
       $(document).ready(function() {
     	  
+    	  var $conductas = "";
     	  AnyTime.picker("datepicker");
     	  
       $('#curso').change(function(event) {
@@ -27,7 +29,7 @@
               });
       
       $.get('ListaLugares' , {} ,  function (data) {
-    	 var $select = $('#lugar');
+    	 var $select = $('#lugar');    	
     	 $select.append(data);
       });
       
@@ -50,6 +52,7 @@
 
      }
 
+     $conductas += $(this).val()+",";
      $("#conductas").append($cond);
 
      }
@@ -61,11 +64,30 @@
    });
           $("#enviar").click(function(event) {
               
-              $nombreProfesor = $("#nombrecompleto").html();
-              $curso = $("#curso").html();
-              $nombreAlumno = $("#alumnos").html();
-              $lugar = $("#lugar").html();
-              $fecha = $("#datepicker").html();
+              var $nombreProfesor = $("#nombrecompleto").html();
+              var $curso = $("#curso").val();
+              var $nombreAlumno = $("#alumnos").val();
+              var $lugar = $("#lugar").val();
+              var $fecha = $("#datepicker").val();
+              var $detalles = $("#detalles").val();
+              
+              //alert($nombreProfesor+$curso+$nombreAlumno+$lugar+$fecha+$detalles+$conductas);
+              
+               $.post("InsertaParte" , {nombreProfesor : $nombreProfesor ,
+            	   curso : $curso , nombreAlumno : $nombreAlumno ,
+            	   lugar : $lugar , fecha : $fecha ,
+            	   detalles : $detalles , conductas : $conductas }
+               , function (data) {
+            	   
+            	   alert(data);
+            	   
+               });
+               
+               
+              
+              
+              
+              
               
               
           });
@@ -79,13 +101,19 @@
   </script>
 </head>
 <body>
+
+
+	<c:if test = "${sessionScope.auth != 'yes' }" > 
+		<c:redirect url="login.html" />
+	</c:if>
+
 <div id="wrapper">
   <h1>Sistema de gestion de partes IES La Marisma </h1>
   <p id="nombrecompleto" style="margin:0;padding:0;"><%= request.getParameter("nombrecompleto") %></p>
 <div id="main">
 
 
-<form action = "GuardaParte" method="post">
+
 <p>Selecciona curso:<select id="curso">
 <option value="pordefecto">Selecciona curso</option>
 <option value="1daw">1daw</option>
@@ -118,7 +146,7 @@
 
 <p class="conducta"> Conductas generales leves<br> <select class="selectcond" id="generales">
   <option value="pordefecto"> Seleccione conducta </option>
-  <option> Dificultar el estudio a sus compañeros </option>
+  <option> Dificultar el estudio a sus compaÃ±eros </option>
   <option> Conductas o gestos obscenos </option>
 </select> </p>
 
@@ -139,8 +167,8 @@
 
 <p style="text-align:center"> Detalles </p>
 <textarea id="detalles" style="resize:none;width:70%;height:150px;"> </textarea>
-<input type="submit">  <input type="reset">
-</form>
+<button id="enviar"> Enviar </button>
+
 </div>
 
 </div>
