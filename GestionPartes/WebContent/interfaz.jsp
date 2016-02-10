@@ -13,8 +13,8 @@
 		<c:redirect url="login.html" />
 	</c:if>
 	
-	<a href="insertar.jsp${sessionScope.nombreCompleto }"> Crear nuevo parte </a> 
-	<a> Consultar partes </a>
+	<a href="insertar.jsp"> Crear nuevo parte </a> 
+	<a href="consultar.jsp"> Consultar partes </a>
 	
 	
 

@@ -6,9 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,21 +13,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
-
-
 /**
- * Servlet implementation class ListaAlumnos
+ * Servlet implementation class ListaCursos
  */
-@WebServlet("/ListaAlumnos")
-public class ListaAlumnos extends HttpServlet {
+@WebServlet("/ListaCursos")
+public class ListaCursos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ListaAlumnos() {
+    public ListaCursos() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,13 +33,11 @@ public class ListaAlumnos extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		Conector conexion = null;
-		
+Conector conexion = null;		
 		
 		String curso = request.getParameter("curso");
 		
-	    ArrayList<String> listaalumnos = new ArrayList<String>(); 
+	    ArrayList<String> listaCursos = new ArrayList<String>(); 
 	    response.setContentType("text/html;charset=utf-8");
 		request.setCharacterEncoding("utf-8");
 	    
@@ -56,16 +47,16 @@ public class ListaAlumnos extends HttpServlet {
 			conexion = new Conector ("admin" , "1234");
 			conexion.openConnection();
 			
-			String sql = "select * from alumnos where curso = ?";
+			String sql = "select * from cursos";
 			
 			PreparedStatement statement = conexion.getConnection().prepareStatement(sql);
 			
-			statement.setString(1, curso);
+			
 			ResultSet resultado = statement.executeQuery();			
 			
 			while (resultado.next()) {
 				
-				listaalumnos.add(resultado.getString("nombre"));	
+				listaCursos.add(resultado.getString("nombre_curso"));	
 				
 			}
 			
@@ -94,7 +85,7 @@ public class ListaAlumnos extends HttpServlet {
 		
 	    PrintWriter out = response.getWriter();
 	    response.setContentType("text/html");
-	    for (int i=0 ; i<listaalumnos.size() ; i++ ) out.println("<option>"+listaalumnos.get(i)+
+	    for (int i=0 ; i<listaCursos.size() ; i++ ) out.println("<option>"+listaCursos.get(i)+
 	    		"</option>)");
 		
 	}
@@ -104,9 +95,6 @@ public class ListaAlumnos extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-
-		
 		
 	}
 

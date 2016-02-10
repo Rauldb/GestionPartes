@@ -33,12 +33,14 @@ public class ListaLugares extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-Conector conexion = null;
 		
+		Conector conexion = null;		
 		
 		String curso = request.getParameter("curso");
 		
 	    ArrayList<String> listalugares = new ArrayList<String>(); 
+	    response.setContentType("text/html;charset=utf-8");
+		request.setCharacterEncoding("utf-8");
 	    
 	            
 			

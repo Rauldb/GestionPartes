@@ -25,7 +25,7 @@ public class Conector
 	public Conector(String user, String password){
 			
 			this.driver = SQL_DRIVER;
-			this.url = SQL_URL+"gestionpartes";
+			this.url = SQL_URL+"gestionpartes?useUnicode=true&amp;characterEncoding=utf8";
 			this.user = user;
 			this.password = password;
 		
@@ -49,7 +49,8 @@ public class Conector
 			Class.forName(driver);
 
 			
-			connection = DriverManager.getConnection(url, user, password);
+			connection = DriverManager.getConnection(url, user, password );
+			
 
 						
 		} 

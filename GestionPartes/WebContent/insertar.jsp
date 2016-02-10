@@ -6,7 +6,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
-  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
   <link rel="stylesheet" href="css/anytime.5.1.2.min.css">  
   <link rel="stylesheet" href="css/formulario.css">
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -28,9 +27,20 @@
                       });
               });
       
-      $.get('ListaLugares' , {} ,  function (data) {
+      $.get('ListaLugares' , function (data) {
     	 var $select = $('#lugar');    	
     	 $select.append(data);
+      });
+      
+      $.get('ListaCursos' , function (data) {
+    	  var $select = $('#curso');
+    	  $select.append(data);    	  
+      });
+      
+      $.get('ListaConductas' , function (data) {
+    	  
+    	  $("#antesDeConducta").after(data);
+    	  
       });
       
      
@@ -109,15 +119,15 @@
 
 <div id="wrapper">
   <h1>Sistema de gestion de partes IES La Marisma </h1>
-  <p id="nombrecompleto" style="margin:0;padding:0;"><%= request.getParameter("nombrecompleto") %></p>
+  <p id="nombrecompleto" style="margin:0;padding:0;">${sessionScope.nombreCompleto}</p>
 <div id="main">
 
 
 
 <p>Selecciona curso:<select id="curso">
 <option value="pordefecto">Selecciona curso</option>
-<option value="1daw">1daw</option>
-<option value="2daw">2daw</option>
+<option value="1daw"></option>
+<option value="2daw"></option>
 </select></p>
 
 <p>Selecciona alumnos<select id="alumnos">
@@ -133,7 +143,7 @@
   <option> Seleccione Lugar </option>  
 </select> </p>
 
-<div class="clear"> </div>
+<div id="antesDeConducta" class="clear"> </div>
 
 <p class="conducta"> Conductas leves <br><select class="selectcond" id="leves">
   <option value="pordefecto"> Seleccione conducta </option>

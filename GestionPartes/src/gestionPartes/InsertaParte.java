@@ -47,6 +47,8 @@ public class InsertaParte extends HttpServlet {
 		String conductas = request.getParameter("conductas");
 		String fecha = request.getParameter("fecha");
 		String detalles = request.getParameter("detalles");
+		response.setContentType("text/html;charset=utf-8");
+		request.setCharacterEncoding("utf-8");
 		
 		response.getWriter().print(curso+nombreAlumno+nombreProfesor+lugar
 				+conductas+fecha+detalles);
