@@ -41,35 +41,36 @@
     	  
     	  $("#antesDeConducta").after(data);
     	  
+    	   $(".selectcond").change(function(event) {
+
+    		     if ( $(this).val() != "pordefecto") {
+
+    		     var $cond;
+    		     switch ($(this).attr('id')) {
+    		       case "leves":
+    		       $cond = "<p class='leve'>"+$(this).val()+"<button type='button'> X </button></p>";
+    		         break;
+    		      case "generales":
+    		       $cond = "<p class='general'>"+$(this).val()+"<button type='button'> X </button></p>";
+    		       break;
+    		       case "graves":
+    		       $cond = "<p class='grave'>"+$(this).val()+"<button type='button'> X </button></p>";
+    		       break;
+
+    		     }
+
+    		     $conductas += $(this).val()+",";
+    		     $("#conductas").append($cond);
+
+    		     }
+    		     $("p > button").click(function(event) {
+    		       $(this).parent().remove();
+
+    		     });
+    	  
       });
       
      
-   $(".selectcond").change(function(event) {
-
-     if ( $(this).val() != "pordefecto") {
-
-     var $cond;
-     switch ($(this).attr('id')) {
-       case "leves":
-       $cond = "<p class='leve'>"+$(this).val()+"<button type='button'> X </button></p>";
-         break;
-      case "generales":
-       $cond = "<p class='general'>"+$(this).val()+"<button type='button'> X </button></p>";
-       break;
-       case "graves":
-       $cond = "<p class='grave'>"+$(this).val()+"<button type='button'> X </button></p>";
-       break;
-
-     }
-
-     $conductas += $(this).val()+",";
-     $("#conductas").append($cond);
-
-     }
-     $("p > button").click(function(event) {
-       $(this).parent().remove();
-
-     });
 
    });
           $("#enviar").click(function(event) {
@@ -126,8 +127,6 @@
 
 <p>Selecciona curso:<select id="curso">
 <option value="pordefecto">Selecciona curso</option>
-<option value="1daw"></option>
-<option value="2daw"></option>
 </select></p>
 
 <p>Selecciona alumnos<select id="alumnos">
@@ -144,28 +143,6 @@
 </select> </p>
 
 <div id="antesDeConducta" class="clear"> </div>
-
-<p class="conducta"> Conductas leves <br><select class="selectcond" id="leves">
-  <option value="pordefecto"> Seleccione conducta </option>
-  <option> Vestimenta Inadecuada </option>
-  <option> Traer objetos peligrosos al centro </option>
-</select> </p>
-
-
-
-
-<p class="conducta"> Conductas generales leves<br> <select class="selectcond" id="generales">
-  <option value="pordefecto"> Seleccione conducta </option>
-  <option> Dificultar el estudio a sus compañeros </option>
-  <option> Conductas o gestos obscenos </option>
-</select> </p>
-
-
-<p class="conducta"> Conductas graves<br> <select class="selectcond" id="graves">
-  <option value="pordefecto"> Seleccione conducta </option>
-  <option> Vejaciones o humillaciones </option>
-  <option> Amenazas o coacciones </option>
-</select> </p>
 
 <div class="clear"></div>
 <p style="float:none"> Conductas seleccionadas </p>

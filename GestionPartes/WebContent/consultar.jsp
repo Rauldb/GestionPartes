@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/anytime.5.1.2.min.css">
 <link rel="stylesheet" href="css/tablas.css">  
+<link rel="stylesheet" href="css/consultar.css">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="js/anytime.5.1.2.min.js"></script>
 <title>Consulta de partes</title>

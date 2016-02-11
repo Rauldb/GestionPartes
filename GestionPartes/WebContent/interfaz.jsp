@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="css/menu.css">
 <title>Interfaz SGP</title>
 </head>
 <body>
@@ -13,10 +14,13 @@
 		<c:redirect url="login.html" />
 	</c:if>
 	
-	<a href="insertar.jsp"> Crear nuevo parte </a> 
-	<a href="consultar.jsp"> Consultar partes </a>
+	<div id="wrapper">
 	
+	<a href="insertar.jsp"><button type="button"> Crear nuevo parte </button></a> 
+	<a href="consultar.jsp"><button type="button" > Consultar partes </button></a>
+	<a href="eliminar.jsp"><button type="button"> Eliminar partes</button></a>
 	
+	</div>
 
 </body>
 </html>
